@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BridgSign: AI-Powered Sign Language Animation System - Case Study</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --secondary: #64748b;
+      --accent: #0ea5e9;
+      --bg-light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+    }
+
+    body {
+      font-family:
+        'Inter',
+        system-ui,
+        -apple-system,
+        sans-serif;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 40px 60px;
+      color: var(--text-main);
+      line-height: 1.7;
+      background-color: #ffffff;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: var(--secondary);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      background: var(--bg-light);
+      padding: 1.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .meta-item strong {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--secondary);
+      margin-bottom: 0.25rem;
+    }
+
+    .meta-item span {
+      font-weight: 600;
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+    }
+
+    /* Content Styling */
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    h2 i {
+      font-size: 1.25rem;
+      color: var(--primary);
+      opacity: 0.9;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #334155;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      color: #334155;
+      text-align: justify;
+    }
+
+    .highlight-box {
+      background-color: #eff6ff;
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      border-radius: 0 6px 6px 0;
+      margin: 2rem 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    /* Card Layouts */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      color: var(--primary-dark);
+      font-size: 1.1rem;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--secondary);
+      margin-bottom: 0;
+      text-align: left;
+    }
+
+    /* Pipeline Visualization */
+    .pipeline-wrapper {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      overflow-x: auto;
+    }
+
+    .pipeline-steps {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative;
+      min-width: 600px;
+    }
+
+    .step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      padding: 0 10px;
+    }
+
+    .step-icon {
+      width: 50px;
+      height: 50px;
+      background: white;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      color: var(--primary);
+      font-size: 1.2rem;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.1);
+    }
+
+    .step-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0f172a;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    .step-desc {
+      font-size: 0.75rem;
+      color: var(--secondary);
+      line-height: 1.4;
+    }
+
+    .pipeline-connector {
+      position: absolute;
+      top: 25px;
+      left: 50px;
+      right: 50px;
+      height: 2px;
+      background: #cbd5e1;
+      z-index: 1;
+    }
+
+    /* Tech Stack Tags */
+    .tech-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .tech-tag {
+      background: #f1f5f9;
+      color: #334155;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid #e2e8f0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tech-tag i {
+      color: var(--secondary);
+      font-size: 0.8em;
+    }
+
+    /* Achievements */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .stat-value {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Code snippets style */
+    code {
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-family: 'Monaco', 'Consolas', monospace;
+    }
+
+    /* List Styling */
+    ul.custom-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.custom-list li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.75rem;
+      color: #334155;
+    }
+
+    ul.custom-list li::before {
+      content: '•';
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0;
+      top: -0.2rem;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* Architecture Details Table */
+    .arch-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .arch-table th {
+      text-align: left;
+      padding: 1rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border-color);
+      width: 30%;
+      vertical-align: top;
+    }
+
+    .arch-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+      vertical-align: top;
+    }
+
+    .arch-table tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+</head>
+
+<body style="">
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>BridgSign Documentation</h1>
+    <div class="subtitle">AI-Powered Sign Language Animation System &amp; Architecture</div>
+  </header>
+
+  <!-- Executive Summary -->
+  <section>
+    <h2><i class="fas fa-chart-line"></i> Executive Summary</h2>
+    <p>
+      <strong>BridgSign</strong> is an end-to-end AI solution engineered to bridge the communication gap for the deaf
+      community. By transforming text and video input into high-fidelity, grammatically accurate 3D sign language
+      animations, the system addresses critical accessibility needs. As the Lead AI Engineer, I architected the core
+      motion capture pipeline, developed custom biomechanical algorithms, and successfully deployed a production-ready
+      system capable of translating three distinct sign languages.
+    </p>
+  </section>
+
+  <!-- Problem Statement -->
+  <section>
+    <h2><i class="fas fa-exclamation-triangle"></i> The Challenge: Silence in a Crisis</h2>
+    <p>
+      The critical nature of information accessibility became tragically apparent during the COVID-19 pandemic. In
+      Tunisia, a deaf individual was detained for violating lockdown measures simply because he lacked access to news
+      in his native sign language. This incident wasn't isolated; it highlighted a systemic global failure. While text
+      and audio translation tools are ubiquitous, automated translation into authentic, grammatically correct sign
+      language remained a technological frontier.
+    </p>
+    <p>
+      Traditional approaches—like simple gesture replacement—fail to capture the nuance, grammar, and facial
+      expressions essential for true sign language comprehension. The challenge was to build a system that could
+      generate linguistically accurate, biomechanically valid 3D animations scalable across different sign languages.
+    </p>
+  </section>
+
+  <!-- Solution Overview -->
+  <section>
+    <h2><i class="fas fa-lightbulb"></i> Solution: Intelligent Motion Synthesis</h2>
+    <div class="highlight-box">
+      <p>
+        BridgSign goes beyond simple translation. It utilizes a sophisticated pipeline that combines Natural Language
+        Processing (NLP) for grammatical structure with advanced Computer Vision for motion synthesis, rendering the
+        output via a 3D Unity avatar.
+      </p>
+    </div>
+    <p>
+      The system accepts text, audio, or video input and processes it through a multi-stage AI pipeline. By extracting
+      high-fidelity motion data from expert signers and mapping it to a 3D skeleton using custom kinematics
+      algorithms, BridgSign produces animations that respect the intricate grammar of sign language, including
+      essential non-manual markers like facial expressions.
+    </p>
+  </section>
+
+  <!-- My Contribution -->
+  <section>
+    <h2><i class="fas fa-fingerprint"></i> My Technical Contribution</h2>
+    <p>
+      As the architect and creator of the technical solution, my role focused on engineering the core AI systems that
+      power the product. I was responsible for transforming theoretical concepts into a functional, deployable engine.
+    </p>
+
+    <div class="card-grid">
+      <div class="feature-card">
+        <h3><i class="fas fa-sitemap"></i> System Architecture</h3>
+        <p>
+          Designed and implemented the complete motion capture pipeline, taking raw video data and processing it into
+          optimized JSON animation data ready for the Unity runtime environment.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3><i class="fas fa-code-branch"></i> Algorithm Development</h3>
+        <p>
+          Engineered custom mathematical solutions to convert 3D landmarks into Euler rotations. This overcame
+          significant limitations in standard libraries, ensuring anatomically correct finger and wrist movements.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3><i class="fas fa-chalkboard-teacher"></i> Technical Leadership</h3>
+        <p>
+          Mentored two engineering interns, guiding them through complex implementations of multi-dictionary support
+          (American and Arabic Sign Languages) and fostering best practices in AI development.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3><i class="fas fa-network-wired"></i> Cross-Functional Integration</h3>
+        <p>
+          Collaborated extensively with linguistic experts to define grammar rules and with Unity developers to ensure
+          the seamless integration of the Python-based AI pipeline with the frontend visualization engine.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Deep Dive -->
+  <section>
+    <h2><i class="fas fa-server"></i> Technical Deep Dive</h2>
+
+    <h3>System Architecture Pipeline</h3>
+    <div class="pipeline-wrapper">
+      <div class="pipeline-steps">
+        <div class="pipeline-connector"></div>
+
+        <div class="step">
+          <div class="step-icon"><i class="fas fa-database"></i></div>
+          <span class="step-title">Database</span>
+          <span class="step-desc">Expert Motion Capture</span>
+        </div>
+
+        <div class="step">
+          <div class="step-icon"><i class="fas fa-keyboard"></i></div>
+          <span class="step-title">Input</span>
+          <span class="step-desc">Text/Audio/Video</span>
+        </div>
+
+        <div class="step">
+          <div class="step-icon"><i class="fas fa-language"></i></div>
+          <span class="step-title">NLP</span>
+          <span class="step-desc">Glossing &amp; Grammar</span>
+        </div>
+
+        <div class="step">
+          <div class="step-icon"><i class="fas fa-random"></i></div>
+          <span class="step-title">Sequencing</span>
+          <span class="step-desc">Blending &amp; Timing</span>
+        </div>
+
+        <div class="step">
+          <div class="step-icon"><i class="fas fa-vr-cardboard"></i></div>
+          <span class="step-title">Rendering</span>
+          <span class="step-desc">Unity Runtime</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>Core Implementation Details</h3>
+    <table class="arch-table">
+      <tbody>
+        <tr>
+          <th><i class="fas fa-brain"></i> NLP &amp; Glossing</th>
+          <td>
+            Developed a processing layer using <code>spaCy</code> to convert spoken language (French/Arabic) into
+            "Glosses"—the semantic units of sign language. This layer reorders sentences to match LST (Tunisian Sign
+            Language) grammar structures.
+          </td>
+        </tr>
+        <tr>
+          <th><i class="fas fa-bone"></i> Pose Extraction</th>
+          <td>
+            Utilized <strong>MediaPipe</strong> for holistic tracking of body, face, and hands. Implemented a custom
+            normalization algorithm to make motion data invariant to camera angle, distance, and signer body
+            proportions.
+          </td>
+        </tr>
+        <tr>
+          <th><i class="fas fa-hand-paper"></i> Biomechanics</th>
+          <td>
+            Converted raw 3D landmarks into Forward Kinematics joint rotations. I applied constraints to finger joints
+            to prevent unnatural bending, ensuring the avatar's hands looked realistic and not "robotic."
+          </td>
+        </tr>
+        <tr>
+          <th><i class="fas fa-smile"></i> Facial Expression</th>
+          <td>
+            Extracted 52 ARKit-compatible blendshapes. These were smoothed and mapped to the avatar to convey critical
+            grammatical markers (e.g., raised eyebrows for questions) that are essential in sign language.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3><i class="fas fa-cogs"></i> Challenges &amp; Solutions</h3>
+    <div class="card-grid" style="margin-top: 1.5rem">
+      <div class="feature-card">
+        <h3>Solving the Rotation Problem</h3>
+        <p>
+          <strong>Challenge:</strong> MediaPipe provides 3D coordinates (x, y, z), but Unity avatars require joint
+          rotations (Euler angles). Direct mapping results in distorted limbs.
+        </p>
+        <p style="margin-top: 0.5rem; color: var(--text-main)">
+          <strong>Solution:</strong> I implemented a vector math layer that calculates the rotation matrices between
+          limb segments relative to a T-pose reference, ensuring accurate translation from "points in space" to "joint
+          angles."
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3>Eliminating Motion Jitter</h3>
+        <p>
+          <strong>Challenge:</strong> Frame-by-frame inference introduces high-frequency noise ("jitter"), making the
+          avatar shake uncontrollably.
+        </p>
+        <p style="margin-top: 0.5rem; color: var(--text-main)">
+          <strong>Solution:</strong> I integrated the <strong>One-Euro Filter</strong> and Savitzky-Golay smoothing
+          filters. This adaptive filtering smooths out noise during slow movements while preserving responsiveness
+          during rapid signing gestures.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section>
+    <h2><i class="fas fa-trophy"></i> Results &amp; Impact</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-value">1,000+</span>
+        <span class="stat-label">Signs Processed</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">3</span>
+        <span class="stat-label">Languages (LST, ASL, ArSL)</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">30fps</span>
+        <span class="stat-label">Real-time Performance</span>
+      </div>
+    </div>
+    <p>
+      The technology was successfully adopted as the core engine for a Tunisian startup, enabling the creation of the
+      first comprehensive digital dictionary for Tunisian Sign Language. The system's modularity allowed for rapid
+      scaling to American (ASL) and Arabic (ArSL) sign languages.
+    </p>
+  </section>
+
+  <!-- Tech Stack -->
+  <section>
+    <h2><i class="fas fa-layer-group"></i> Technology Stack</h2>
+    <div class="card-grid">
+      <div>
+        <h3><i class="fas fa-eye"></i> Computer Vision</h3>
+        <div class="tech-container">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">MediaPipe</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">NumPy</span>
+        </div>
+      </div>
+      <div>
+        <h3><i class="fas fa-code"></i> Engineering &amp; Integration</h3>
+        <div class="tech-container">
+          <span class="tech-tag">Flask API</span>
+          <span class="tech-tag">SciPy (Signal Processing)</span>
+          <span class="tech-tag">spaCy (NLP)</span>
+          <span class="tech-tag">Unity Integration</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reflections -->
+  <section>
+    <h2><i class="fas fa-book-open"></i> Reflections &amp; Growth</h2>
+    <p>
+      Developing BridgSign was a masterclass in solving <strong>domain-specific AI constraints</strong>. It taught me
+      that theoretical model accuracy is secondary to the user experience—in this case, the linguistic readability of
+      the avatar. The project reinforced the importance of interdisciplinary collaboration, proving that the best
+      engineering solutions emerge from a deep understanding of the human problem, not just the data.
+    </p>
+  </section>
+
+
+</body>
+
+</html>
