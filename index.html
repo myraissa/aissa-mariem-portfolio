@@ -40,6 +40,7 @@
             <div class="hero-pills">
                 <a class="pill" href="mailto:mariem.aissa@ensi-uma.tn">
                     <i class="bi bi-envelope"></i>
+
                     <span>mariem.aissa@ensi-uma.tn</span>
                 </a>
                 <a class="pill" href="tel:+21650828084">
@@ -226,6 +227,12 @@
                     <div class="education-details">
                         <h3>Computer Science Engineering Degree</h3>
                         <p class="education-institution">National School of Computer Science (ENSI)</p>
+
+                        <p class="education-highlight">
+                            Top-ranked Tunisian engineering school; admitted via national competitive exam (top 5% of
+                            science graduates)
+                        </p>
+
                         <div class="education-meta">
                             <span><i class="bi bi-geo-alt"></i> Tunis, Tunisia</span>
                             <span><i class="bi bi-calendar"></i> 09/2021 - 11/2024</span>
@@ -259,85 +266,119 @@
             </div>
 
             <div class="testimonials-wrapper">
-                <article class="testimonial-card">
-                    <div class="testimonial-quote">
-                        <i class="bi bi-quote"></i>
-                    </div>
-                    <blockquote class="testimonial-content">
-                        Ms. Mariem Aissa has worked with us at Tradrly as a Data Scientist for a period of 10 months.
-                        During this time, she demonstrated strong technical skills, professionalism, and a high level of
-                        commitment to her work.
-                        She has been involved in developing data-driven solutions, working with machine learning models,
-                        and contributing to various projects that required analytical thinking and problem-solving
-                        abilities. Her capacity to quickly understand complex concepts and transform them into practical
-                        solutions has been highly valuable to our team.
-                        In addition to her technical expertise, Ms. Mariem Aissa is a reliable and collaborative team
-                        member. She communicates effectively, adapts well to challenges, and consistently meets
-                        deadlines.
-                        Based on her performance and dedication, I strongly recommend Ms. Mariem Aissa for any
-                        opportunity in the field of Data Science.
-                        I am confident that she will be a valuable asset to any organization.
-                    </blockquote>
-                    <div class="testimonial-footer">
-                        <div class="testimonial-author">
-                            <strong>Salah Sammari, CEO</strong>
-                            <span>Tradrly (Tunisia) • February 2026</span>
-                        </div>
-                    </div>
-                    <p class="testimonial-note">Full reference letter available upon request</p>
-                </article>
-                <article class="testimonial-card">
-                    <div class="testimonial-quote">
-                        <i class="bi bi-quote"></i>
-                    </div>
-                    <blockquote class="testimonial-content">
-                        Ms. Aissa was always an extremely motivated employee. She approached difficult tasks with great
-                        enthusiasm and always found sensible and practicable solutions. She was extremely reliable and
-                        her
-                        working style was always characterized by very careful planning and a systematic approach. Even
-                        when
-                        the workload was very high, Ms. Aissa proved to be a resilient employee and went above and
-                        beyond
-                        the call of duty.
-                    </blockquote>
-                    <div class="testimonial-footer">
-                        <div class="testimonial-author">
-                            <strong>Michael Kania, CEO</strong>
-                            <span>dytab GmbH (Germany) • November 2024</span>
-                        </div>
-                    </div>
-                    <p class="testimonial-note">Full reference letter available upon request</p>
-                </article>
+                <div class="testimonials-slider">
+                    <div class="testimonials-track" id="testimonialsTrack">
 
-                <article class="testimonial-card">
-                    <div class="testimonial-quote">
-                        <i class="bi bi-quote"></i>
+
+                        <!-- Slide 2: Michael Kania / dytab (English) -->
+                        <article class="testimonial-card">
+                            <div class="testimonial-company-logo">
+                                <img src="images/logo med.png" alt="dytab GmbH" class="testimonial-logo-img"
+                                    onerror="this.style.display='none'">
+                                <span class="testimonial-logo-name">dytab GmbH</span>
+                            </div>
+                            <div class="testimonial-quote"><i class="bi bi-quote"></i></div>
+                            <blockquote class="testimonial-excerpt">
+                                Always extremely motivated, approaching difficult tasks with great enthusiasm. Extremely
+                                reliable — her working style characterized by very careful planning and a systematic
+                                approach.
+                            </blockquote>
+                            <button class="testimonial-read-more" onclick="openTestimonialModal(1)">
+                                <i class="bi bi-arrow-right-circle"></i> Read full reference
+                            </button>
+                            <div class="testimonial-footer">
+                                <div class="testimonial-author">
+                                    <strong>Michael Kania, CEO</strong>
+                                    <span>dytab GmbH (Germany) • November 2024</span>
+                                </div>
+                            </div>
+                            <p class="testimonial-note">Full reference letter available upon request</p>
+                        </article>
+
+                        <!-- Slide 3: Michael Kania / dytab (German original) -->
+                        <article class="testimonial-card">
+                            <div class="testimonial-company-logo">
+                                <img src="images/logo med.png" alt="dytab GmbH" class="testimonial-logo-img"
+                                    onerror="this.style.display='none'">
+                                <span class="testimonial-logo-name">dytab GmbH — Originalzeugnis</span>
+                            </div>
+                            <div class="testimonial-quote"><i class="bi bi-quote"></i></div>
+                            <blockquote class="testimonial-excerpt">
+                                Stets äußerst motivierte Mitarbeiterin. Schwierige Aufgaben ging sie mit großem Elan an
+                                und fand dabei immer sinnvolle und praktikable Lösungen.
+                            </blockquote>
+                            <button class="testimonial-read-more" onclick="openTestimonialModal(2)">
+                                <i class="bi bi-arrow-right-circle"></i> Vollständige Referenz lesen
+                            </button>
+                            <div class="testimonial-footer">
+                                <div class="testimonial-author">
+                                    <strong>Michael Kania, CEO</strong>
+                                    <span>dytab GmbH (Germany) • November 2024</span>
+                                </div>
+                            </div>
+                            <p class="testimonial-note">Vollständiges Referenzschreiben auf Anfrage</p>
+                        </article>
+                        <!-- Slide 1: Salah Sammari / Tradrly -->
+                        <article class="testimonial-card">
+                            <div class="testimonial-company-logo">
+                                <img src="images/tradrly.jpeg" alt="Tradrly" class="testimonial-logo-img"
+                                    onerror="this.style.display='none'">
+                                <span class="testimonial-logo-name">Tradrly</span>
+                            </div>
+                            <div class="testimonial-quote"><i class="bi bi-quote"></i></div>
+                            <blockquote class="testimonial-excerpt">
+                                Strong technical skills, professionalism, and a high level of commitment. Her capacity
+                                to quickly understand complex concepts and transform them into practical solutions has
+                                been highly valuable.
+                            </blockquote>
+                            <button class="testimonial-read-more" onclick="openTestimonialModal(0)">
+                                <i class="bi bi-arrow-right-circle"></i> Read full reference
+                            </button>
+                            <div class="testimonial-footer">
+                                <div class="testimonial-author">
+                                    <strong>Salah Sammari, CEO</strong>
+                                    <span>Tradrly (Tunisia) • February 2026</span>
+                                </div>
+                            </div>
+                            <p class="testimonial-note">Full reference letter available upon request</p>
+                        </article>
+
                     </div>
-                    <blockquote class="testimonial-content">
-                        Frau Aissa war eine stets äußerst motivierte Mitarbeiterin (Praktikantin). Schwierige Aufgaben
-                        ging sie mit großem Elan an und fand dabei immer sinnvolle und praktikable Lösungen.
-                        Sie war äußerst zuverlässig, und ihr Arbeitsstil war stets geprägt durch sehr sorgfältige
-                        Planung und Systematik. Auch bei sehr hohem Arbeitsanfall erwies sich Frau Aissa als
-                        belastbare Mitarbeiterin und ging überlegt, ruhig und zielorientiert vor.
-                        Ihre Arbeitsergebnisse waren, auch bei wechselnden Anforderungen und unter sehr
-                        schwierigen Bedingungen, stets von sehr guter Qualität. Frau Aissa hat unsere Erwartungen
-                        stets in jeder Hinsicht erfüllt. Wir waren mit ihren Leistungen jederzeit äußerst zufrieden.
-                        Gegenüber Vorgesetzten und Mitarbeitern verhielt Frau Aissa sich stets vorbildlich. Sie trug
-                        zu einer hervorragenden und effizienten Teamarbeit bei.
-                        Wir schätzen ihre Leistungen sehr und wünschen ihr für die berufliche und persönliche
-                        Zukunft viel Erfolg
-                    </blockquote>
-                    <div class="testimonial-footer">
-                        <div class="testimonial-author">
-                            <strong>Michael Kania, CEO</strong>
-                            <span>dytab GmbH (Germany) • November 2024</span>
-                        </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="testimonials-nav">
+                    <button class="testimonials-btn" onclick="moveSlider(-1)" aria-label="Previous">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <div class="testimonials-dots" id="testimonialDots">
+                        <button class="t-dot active" onclick="goToSlide(0)"></button>
+                        <button class="t-dot" onclick="goToSlide(1)"></button>
+                        <button class="t-dot" onclick="goToSlide(2)"></button>
                     </div>
-                    <p class="testimonial-note">Full reference letter available upon request</p>
-                </article>
+                    <button class="testimonials-btn" onclick="moveSlider(1)" aria-label="Next">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Testimonial Read More Modal -->
+    <div id="tmOverlay" class="tm-overlay" onclick="if(event.target===this)closeTMModal()">
+        <div class="tm-modal">
+            <div class="tm-header">
+                <div class="tm-header-info">
+                    <strong id="tmAuthor"></strong>
+                    <span id="tmCompany"></span>
+                </div>
+                <button class="tm-close" onclick="closeTMModal()"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="tm-body">
+                <p id="tmFullText"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Projects Section -->
     <section id="projects" class="section section-alt">
@@ -392,7 +433,7 @@
 
                     <div class="project-impact">
                         <i class="bi bi-graph-up"></i>
-                        Launched January 2026 • 1000+ sign dataset • 30 FPS real-time
+                        1000+ sign dataset • 30 FPS real-time
                     </div>
 
                     <div class="tech-stack">
@@ -404,20 +445,15 @@
                     </div>
 
                     <div class="project-links">
-                        <a href="https://flask.bridgsign.net/api-docs" target="_blank" rel="noopener"
-                            class="btn btn-primary">
-                            <i class="bi bi-box-arrow-up-right"></i>
-                            Live API Docs
-                        </a>
                         <a href="#contact" class="btn btn-primary">
                             <i class="bi bi-envelope"></i>
                             Request Reference letter
                         </a>
 
-                        <a href="videos/PresntationProjet.mp4" target="_blank" rel="noopener" class="btn btn-outline">
-                            <i class="bi bi-play-circle"></i>
-                            Demo Video
-                        </a>
+                        <button onclick="openBridgSignModal()" class="btn btn-demo">
+                            <i class="bi bi-play-circle-fill"></i>
+                            View Demos
+                        </button>
                         <a href="Bridgsign.html" target="_blank" rel="noopener" class="btn btn-outline">
                             <i class="bi bi-file-text"></i>
                             Documentation
@@ -516,9 +552,9 @@
                     <ul class="skill-list">
                         <li>RAG systems</li>
                         <li>LLMs: GPT-4, Gemini, Llama 3.1</li>
-                        <li>ML, DL</li>
+                        <li>NLP pipelines with spaCy (English &amp; French)</li>
                         <li>Prompt engineering</li>
-                        <li>Fine-tuning & agent workflows</li>
+                        <li>Fine-tuning &amp; agent workflows</li>
                         <li>Vector search: FAISS, embeddings</li>
                     </ul>
                 </div>
@@ -531,8 +567,10 @@
                     <ul class="skill-list">
                         <li>Pose estimation (MediaPipe)</li>
                         <li>OpenCV video processing pipelines</li>
-                        <li>Savitzky-Golay filtering for smoothing</li>
-                        <li>Facial expression detection</li>
+                        <li>Motion capture pipeline for 1000+ expert-recorded sign units</li>
+                        <li>Torso normalization &amp; forward-kinematics finger rotations</li>
+                        <li>Facial blendshapes &amp; seamless avatar lip-sync</li>
+                        <li>Savitzky-Golay smoothing &amp; cubic-spline interpolation</li>
                     </ul>
                 </div>
 
@@ -546,7 +584,8 @@
                         <li>React.js, Angular, NestJS</li>
                         <li>Flask, FastAPI, Streamlit</li>
                         <li>MongoDB, MySQL</li>
-                        <li>Docker, Git/GitHub, CI/CD</li>
+                        <li>Docker, Git, GitHub Actions &amp; CI/CD</li>
+                        <li>Agile / Scrum, clean coding &amp; technical documentation</li>
                     </ul>
                 </div>
 
@@ -625,6 +664,102 @@
             </div>
         </div>
     </section>
+
+
+    <!-- ===== BRIDGSIGN DEMO MODAL ===== -->
+    <div id="bridgSignModal" class="bs-modal-overlay" onclick="handleBSOverlayClick(event)">
+        <div class="bs-modal">
+            <div class="bs-modal-header">
+                <div class="bs-modal-title">
+                    <div class="bs-logo-badge">
+                        <i class="bi bi-hand-index-thumb"></i>
+                    </div>
+                    <div>
+                        <h2>BridgSign — Live Demos</h2>
+                        <p>Sign language AI system in action</p>
+                    </div>
+                </div>
+                <button class="bs-close" onclick="closeBridgSignModal()" aria-label="Close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <div class="bs-tabs">
+                <button class="bs-tab active" onclick="switchBSTab('presentation', this)">
+                    <i class="bi bi-tv"></i>
+                    <span>Web Presentation</span>
+                </button>
+                <button class="bs-tab" onclick="switchBSTab('customize', this)">
+                    <i class="bi bi-sliders"></i>
+                    <span>Sign Customization</span>
+                </button>
+                <button class="bs-tab" onclick="switchBSTab('text2sign', this)">
+                    <i class="bi bi-fonts"></i>
+                    <span>Text → Sign</span>
+                </button>
+                <button class="bs-tab" onclick="switchBSTab('video2sign', this)">
+                    <i class="bi bi-camera-video"></i>
+                    <span>Video → Sign</span>
+                </button>
+            </div>
+            <div class="bs-modal-body">
+                <div class="bs-panel active" id="bs-panel-presentation">
+                    <div class="bs-panel-intro">
+                        <h3>Web Platform Presentation</h3>
+                        <p>A walkthrough of the BridgSign platform, avatar experience, and sign translation flow.</p>
+                    </div>
+                    <div class="bs-video-wrapper">
+                        <video controls preload="metadata" class="bs-video" muted>
+                            <source src="videos/first pres.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="bs-panel" id="bs-panel-customize">
+                    <div class="bs-panel-intro">
+                        <h3>Custom Sign Animations</h3>
+                        <p>Individual signs from the motion database with torso normalization, finger rotations, and
+                            facial blendshapes.</p>
+                    </div>
+                    <div class="bs-video-wrapper">
+                        <video controls preload="metadata" class="bs-video" muted>
+                            <source src="videos/customized signs.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="bs-panel" id="bs-panel-text2sign">
+                    <div class="bs-panel-intro">
+                        <h3>Text to Sign Language</h3>
+                        <p>Input text is transformed into fluent sign animation through your NLP and motion pipeline.
+                        </p>
+                    </div>
+                    <div class="bs-video-wrapper">
+                        <video controls preload="metadata" class="bs-video" muted>
+                            <source src="videos/text to sign.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="bs-panel" id="bs-panel-video2sign">
+                    <div class="bs-panel-intro">
+                        <h3>Video / Audio to Sign Language</h3>
+                        <p>Speech is extracted, transcribed, normalized, converted to gloss, and rendered as sign
+                            animation.</p>
+                    </div>
+                    <div class="bs-video-wrapper">
+                        <video controls preload="metadata" class="bs-video" muted>
+                            <source src="videos/video to sign.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Footer -->
     <footer class="footer">
